@@ -59,14 +59,10 @@ if __name__ == "__main__":
         if index < len(training_data):
             train_set = training_data[0:index] + training_data[index + 1:]
             train_set = pd.concat(train_set)
-            # split the sets and encode, could do earlier... but being annoying
-            # X_train = train_set[test_features]
+
             X_train = o_encoder.fit_transform(train_set[test_features])
-            X_test = test_set[test_features]
-            X_test = o_encoder.fit_transform(X_test)
-            y_train = train_set[label]
-            y_train = o_encoder.fit_transform(y_train.values.reshape(-1, 1))
-            y_test = test_set[label]
-            y_test = o_encoder.fit_transform(y_test.values.reshape(-1, 1))
+            X_test = o_encoder.fit_transform(test_set[test_features])
+            y_train = o_encoder.fit_transform(train_set[label].values.reshape(-1, 1))
+            y_test = o_encoder.fit_transform(test_set[label].values.reshape(-1, 1))
 
             run_dt_classifier(X_train, X_test, y_train, y_test, test_features)
