@@ -1,15 +1,25 @@
 class Node:
     def __init__(self):
-        self.parent = None  # the parent node for the current node
-        self.children = []
-        self.split = None  # what information the node is split on.
-        self.feature_values = None  # the vales the feature split is based on
-        self.leaf = False  # is it a leaf?
-        self.result = None  # saved for output
-        self.info_gain = 0  # stores the information gain
-        self.mode = None  # the data at this node
-        self.level = 0  # the depth in the tree
+        self.children = []          # list of the children nodes
+        self.split_value = None           # what information the node is split on.
+        self.feature_values = None  # the values the feature split is based on
+        self.result = None          # saved for output
+        self.info_gain = 0          # stores the information gain
+        self.parent = None
+
+    def is_leaf(self):
+        return len(self.children) == 0
+
+    def get_level(self):
+        levels = [child.get_level() for child in self.children]
+        level = max(levels) + 1 if levels else 1
+        return level
+
+    def __iter__(self):
+        yield self
+        for child in self.children:
+            yield child
 
     def __repr__(self):
-        return str(self.leaf) + '   ' + str(self.level) + '  ' + str(self.split) + '  ' + self.result + '  ' + \
-               str(self.info_gain) + ':   ' + str(self.parent)
+        return str(self.is_leaf()) + '   ' + str(self.split_value) + '  ' + str(self.feature_values) + '  ' \
+               + str(self.result) + '  ' + str(self.info_gain) + '  \n\t' + str(self.children)

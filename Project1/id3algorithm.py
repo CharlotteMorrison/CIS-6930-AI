@@ -1,6 +1,6 @@
 import numpy as np
-import scipy.stats
 import copy
+from Project1.nodegraph import NodeGraph
 
 from Project1.node import Node
 
@@ -8,17 +8,13 @@ from Project1.node import Node
 class ID3Algorithm(object):
 
     def __init__(self):
-        pass
+        self.graph = NodeGraph()
 
     # find the entropy for the dataset takes in the feature values only
     @classmethod
     def get_entropy(cls, dataset, feature):
         # get the count of the number of each values from the target column (edible?)
         counts = dataset[feature].value_counts(ascending=False).tolist()
-
-        # scipy implementation
-        # entropy = scipy.stats.entropy(pk=counts, base=2.0)
-
         entropy = np.sum([(-counts[i]/np.sum(counts)) * np.log2(counts[i]/np.sum(counts)) for i in range(len(counts))])
         return entropy
 
@@ -40,41 +36,32 @@ class ID3Algorithm(object):
         info_gain = entropy - attribute_entropy
         return info_gain
 
-    def run_id3_algorithm(self, examples, target_attribute, attributes, parent_examples, parent_node=None):
+    def run_id3_algorithm(self, examples, target_attribute, attributes, parent_examples):
         dataset = copy.deepcopy(examples)
-        attribute_list = attributes
+        attribute_list = copy.deepcopy(attributes)
         parent_dataset = copy.deepcopy(parent_examples)
         node = Node()
-        check_target_values = dataset[target_attribute].count()
-        dataset_length, _ = dataset.shape
+        check_target_values = dataset[target_attribute].nunique()
+        dataset_length = len(dataset.index)
 
         # if the dataset has no values return the mode of the target attribute
         if dataset_length == 0:
-            node.parent = parent_node
-            node.level = parent_node.level + 1
             node.leaf = True
-            node.result = parent_examples[0].mode()
-            node.parent.leaf = True
+            node.result = parent_examples[target_attribute].mode()
             return node
 
-        # if there is only one value in the target column- it is sorted, return the value that it is.
+        # if there is only one unique value in the target column- it is sorted, return the value that it is.
         elif check_target_values <= 1:
-            node.parent = parent_node
-            node.level = parent_node.level + 1
             node.leaf = True
-            node.result = 1
-            node.parent.leaf = True
+            node.result = dataset[target_attribute].mode()
             return node
 
         # if the attributes are empty, then return the mode of the dataset
-        #TODO fix this weirdness.
         elif len(attribute_list) == 0:
-            # node.parent = parent_node
-            # node.level = parent_node.level + 1
-            # node.leaf = True
-            # node.result = 1
-            # node.parent.leaf = True
-            return parent_node
+            print(dataset_length)
+            node.leaf = True
+            node.result = dataset[target_attribute].mode()
+            return node
 
         # if none are true then add to the tree
         else:
@@ -85,30 +72,29 @@ class ID3Algorithm(object):
 
             best_attribute_values = dataset[best_value].value_counts(ascending=False).index.tolist()
 
-            # create the root node and record pertinent data
-
-            node.split = best_value
+            # create the the node
+            node.split_value = best_value
             node.feature_values = best_attribute_values
             node.info_gain = max(item_values)
-            node.parent = parent_node
             node.mode = dataset.loc[:, best_value]
-
-            if node.parent is not None:
-                node.level = parent_node.level + 1
+            node.children = []
 
             # remove the best value attribute from the list
             attribute_list.remove(best_value)
-
+            self.graph.new_node(node, node.info_gain)
             # build the decision tree
             for value in best_attribute_values:  # list of attributes from the best one...
-                attribute_dataset = dataset.loc[dataset[best_value] == value]
+                # set up children
+                subtree = Node()
+                subtree.split_value = value
+                node.children.append(subtree)
 
-                node.result = value
-
-                subtree = self.run_id3_algorithm(attribute_dataset, target_attribute, attribute_list, parent_examples, node)
-                if isinstance(subtree, Node):
-                    node.children.append(subtree)
-                    print(node)
-                    node = subtree
+                attribute_dataset = copy.deepcopy(dataset.loc[dataset[best_value] == value])
+                subtree = self.run_id3_algorithm(attribute_dataset, target_attribute, attribute_list, parent_examples)
+                self.graph.new_node(subtree, subtree.info_gain)
+                self.graph.new_edge((node, subtree))
 
             return node
+
+    def graph_it(self, index):
+        self.graph.draw_graph(index)

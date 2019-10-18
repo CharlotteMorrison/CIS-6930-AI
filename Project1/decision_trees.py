@@ -1,3 +1,5 @@
+import copy
+
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 from Project1.id3algorithm import ID3Algorithm
@@ -31,15 +33,20 @@ def load_data_samples():
 if __name__ == "__main__":
 
     training_data, test_features, label, testing_data = load_data_samples()
-    id3 = ID3Algorithm()
+
     for index in range(len(training_data)):
         test_set = training_data[index]
         if index < len(training_data):
+            id3 = ID3Algorithm()
             train_set = training_data[0:index] + training_data[index + 1:]
             train_set = pd.concat(train_set)
+
             print('=================================')
             print('ID3 Algorithm data set number: ' + str(index + 1))
             print('=================================')
 
-            id3.run_id3_algorithm(train_set, label, test_features, train_set)
+            result = id3.run_id3_algorithm(train_set, label, test_features, train_set)
+            id3.graph_it(index)
+            for n in result:
+                print(n)
 
