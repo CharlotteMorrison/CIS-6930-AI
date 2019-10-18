@@ -6,6 +6,7 @@ class Node:
         self.edge_value = None
         self.result = None          # saved for output
         self.info_gain = 0          # stores the information gain
+        self.mode = None
         self.parent = None
 
     def is_leaf(self):
@@ -22,5 +23,5 @@ class Node:
             yield child
 
     def __repr__(self):
-        return str(self.is_leaf()) + '   ' + str(self.split_value) + '  ' + str(self.feature_values) + '  ' \
+        return str(self.is_leaf()) + '   ' + str(self.attribute_name) + '  ' + str(self.attribute_values) + '  ' \
                + str(self.result) + '  ' + str(self.info_gain) + '  \n\t' + str(self.children)

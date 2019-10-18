@@ -47,19 +47,19 @@ class ID3Algorithm(object):
 
         # if the dataset has no values return the mode of the target attribute
         if dataset_length == 0:
-            node.attribute_values = parent_node.split_value
+            node.attribute_name = parent_node.attribute_name
             node.result = parent_examples[target_attribute].mode()[0]
             return node
 
         # if there is only one unique value in the target column- it is sorted, return the value that it is.
         elif check_target_values <= 1:
-            node.attribute_values = parent_node.split_value
+            node.attribute_name = parent_node.attribute_name
             node.result = dataset[target_attribute].mode()[0]
             return node
 
         # if the attributes are empty, then return the mode of the dataset
         elif len(attribute_list) == 0:
-            node.attribute_values = parent_node.split_value
+            node.attribute_name = parent_node.attribute_name
             node.result = dataset[target_attribute].mode()[0]
             return node
 
@@ -75,7 +75,6 @@ class ID3Algorithm(object):
             # create the the node
             node.attribute_name = best_value
             node.attribute_values = best_attribute_values
-            print(node.attribute_values)
             node.info_gain = max(item_values)
             node.children = []
 
@@ -87,15 +86,12 @@ class ID3Algorithm(object):
             for value in best_attribute_values:  # list of attributes from the best one...
                 # set up children
                 subtree = Node()
-                subtree.attribute_name = value
-                subtree.attribute_values = None
-                subtree.edge_value = value
-                node.children.append(subtree)
+                subtree.parent = node
 
                 attribute_dataset = copy.deepcopy(dataset.loc[dataset[best_value] == value])
                 subtree = self.run_id3_algorithm(attribute_dataset, target_attribute, attribute_list, parent_examples, node)
-
-                # self.graph.new_node(subtree, node.info_gain, node.split_value, node.feature_values, node.result)
+                subtree.edge_value = value
+                node.children.append(subtree)
                 self.graph.new_node(subtree, subtree.info_gain, subtree.attribute_name, subtree.attribute_values, subtree.result)
                 self.graph.new_edge((node, subtree), value)
 

@@ -10,15 +10,15 @@ class NodeGraph:
     def __init__(self):
         self.graph = nx.Graph()
 
-    def new_node(self, node, ig, sv, fv, result):
+    def new_node(self, node, ig, fv, sv, result):
         # if leaf
         if ig <= 0:
             label = "Leaf: " + fv + "\nResult: " + result
         # not a leaf
         else:
-            feature = "Feature: " + str([f for f in fv]) + "\n"
+            feature = "Feature: " + str([f for f in sv]) + "\n"
             info_gain = "IG: " + str(round(ig, 4))
-            att = "Att: " + sv + "\n"
+            att = "Att: " + fv + "\n"
             label = att + feature + info_gain
 
         self.graph.add_node(node, label=label)

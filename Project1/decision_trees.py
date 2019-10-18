@@ -51,8 +51,11 @@ if __name__ == "__main__":
             predictions = pd.DataFrame(columns=['predict'])
 
             for i, row in test_set.iterrows():
-               # predictions.loc[i, 'predict'] = predict(result, row)
-                pass
-            #accuracy = np.sum(predictions['predict'] == test_set[label])/len(label)
-            #print("Accuracy for decision tree " + str(index + 1) + ":  " + str(accuracy))
+                predictions.loc[i, 'predict'] = predict(result, row[1:-1])
+
+
+            totals = predictions['predict'].isin(test_set[label]).value_counts()
+
+            accuracy = totals/len(test_set)
+            print("Accuracy for decision tree " + str(index + 1) + ":  " + str(accuracy))
 
