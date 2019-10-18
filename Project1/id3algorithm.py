@@ -1,15 +1,15 @@
 import numpy as np
 import copy
 from Project1.nodegraph import NodeGraph
-
 from Project1.node import Node
 
 
 class ID3Algorithm(object):
 
-    def __init__(self):
-        self.graph = NodeGraph()
-        self.leaf_counter = 0
+    def __init__(self, ig):
+        self.graph = NodeGraph(ig)
+        # which information gain to use
+        self.ig = ig
 
     # find the entropy for the dataset takes in the feature values only
     @classmethod
@@ -92,7 +92,8 @@ class ID3Algorithm(object):
                 subtree = self.run_id3_algorithm(attribute_dataset, target_attribute, attribute_list, parent_examples, node)
                 subtree.edge_value = value
                 node.children.append(subtree)
-                self.graph.new_node(subtree, subtree.info_gain, subtree.attribute_name, subtree.attribute_values, subtree.result)
+                self.graph.new_node(subtree, subtree.info_gain, subtree.attribute_name, subtree.attribute_values,
+                                    subtree.result)
                 self.graph.new_edge((node, subtree), value)
 
             return node

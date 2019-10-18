@@ -2,6 +2,8 @@ import copy
 
 import numpy as np
 import pandas as pd
+
+from Project1.fscore import fscore
 from Project1.predict import predict
 from Project1.id3algorithm import ID3Algorithm
 
@@ -34,7 +36,10 @@ def load_data_samples():
 if __name__ == "__main__":
 
     training_data, test_features, label, testing_data = load_data_samples()
+    id3_trees = {}
+    c45_trees = {}
 
+    # run with id3
     for index in range(len(training_data)):
         test_set = training_data[index]
         if index < len(training_data):
@@ -42,20 +47,23 @@ if __name__ == "__main__":
             train_set = training_data[0:index] + training_data[index + 1:]
             train_set = pd.concat(train_set)
 
-            print('=================================')
+            print('=====================================')
             print('ID3 Algorithm data set number: ' + str(index + 1))
-            print('=================================')
+            print('=====================================')
 
             result = id3.run_id3_algorithm(train_set, label, test_features, train_set)
-            id3.graph_it(index)
+            # id3.graph_it(index)
             predictions = pd.DataFrame(columns=['predict'])
 
             for i, row in test_set.iterrows():
                 predictions.loc[i, 'predict'] = predict(result, row[1:-1])
 
+            precision, recall, f1score = fscore(predictions['predict'], test_set[label])
+            print('---------------------------------------')
+            print("Precision for decision tree " + str(index + 1) + ":  " + str(precision))
+            print("Recall for decision tree " + str(index + 1) + ":  " + str(recall))
+            print("F1 Score for decision tree " + str(index + 1) + ":  " + str(f1score))
+            print('---------------------------------------\n')
 
-            totals = predictions['predict'].isin(test_set[label]).value_counts()
-
-            accuracy = totals/len(test_set)
-            print("Accuracy for decision tree " + str(index + 1) + ":  " + str(accuracy))
+            id3_trees[index] = [result, precision, recall, f1score]
 

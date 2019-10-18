@@ -7,8 +7,9 @@ from networkx.drawing.nx_agraph import graphviz_layout
 
 
 class NodeGraph:
-    def __init__(self):
+    def __init__(self, ig):
         self.graph = nx.Graph()
+        self.ig = ig
 
     def new_node(self, node, ig, fv, sv, result):
         # if leaf
@@ -49,7 +50,7 @@ class NodeGraph:
                 linewidths=4, font_color="gray", width=2, edge_color="gray")
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=edge_labels, font_size=8)
         # nx.draw(self.graph, labels=labels, node_size=300, k=0.15, node_shape="s", font_size=8, node_color='skyblue')
-        plt.savefig("images/mushroom_graph_" + str(dataset_num) + "_.png")
+        plt.savefig("images/" + self.ig + "_mushroom_graph_" + str(dataset_num) + "_.png")
         plt.show()
 
         print(nx.info(self.graph))
