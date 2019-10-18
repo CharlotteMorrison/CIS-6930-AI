@@ -1,7 +1,8 @@
 import copy
 
+import numpy as np
 import pandas as pd
-from sklearn.preprocessing import OrdinalEncoder
+from Project1.predict import predict
 from Project1.id3algorithm import ID3Algorithm
 
 
@@ -47,6 +48,11 @@ if __name__ == "__main__":
 
             result = id3.run_id3_algorithm(train_set, label, test_features, train_set)
             id3.graph_it(index)
-            # for n in result:
-               # print(n)
+            predictions = pd.DataFrame(columns=['predict'])
+
+            for i, row in test_set.iterrows():
+               # predictions.loc[i, 'predict'] = predict(result, row)
+                pass
+            #accuracy = np.sum(predictions['predict'] == test_set[label])/len(label)
+            #print("Accuracy for decision tree " + str(index + 1) + ":  " + str(accuracy))
 

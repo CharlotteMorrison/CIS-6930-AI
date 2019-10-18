@@ -1,4 +1,5 @@
-import copy
+import warnings
+warnings.filterwarnings("ignore")
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -44,7 +45,8 @@ class NodeGraph:
         edge_labels = nx.get_edge_attributes(self.graph, 'edge_label')
         # convert nx graph to dot for pygraphviz
         pos = graphviz_layout(self.graph, prog='dot')
-        nx.draw(self.graph, pos, labels=labels, node_size=500, node_shape="s", font_size=8, node_color='skyblue')
+        nx.draw(self.graph, pos, labels=labels, node_size=500, node_shape="s", font_size=8, node_color='skyblue',
+                linewidths=4, font_color="gray", width=2, edge_color="gray")
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=edge_labels, font_size=8)
         # nx.draw(self.graph, labels=labels, node_size=300, k=0.15, node_shape="s", font_size=8, node_color='skyblue')
         plt.savefig("images/mushroom_graph_" + str(dataset_num) + "_.png")

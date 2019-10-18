@@ -1,12 +1,12 @@
 class Node:
     def __init__(self):
         self.children = []          # list of the children nodes
-        self.split_value = None           # what information the node is split on.
-        self.feature_values = None  # the values the feature split is based on
+        self.attribute_name = None           # what information the node is split on.
+        self.attribute_values = None  # the values the feature split is based on
+        self.edge_value = None
         self.result = None          # saved for output
         self.info_gain = 0          # stores the information gain
         self.parent = None
-        self.leaf = 0
 
     def is_leaf(self):
         return len(self.children) == 0
