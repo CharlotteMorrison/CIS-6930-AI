@@ -47,6 +47,6 @@ if __name__ == "__main__":
 
             result = id3.run_id3_algorithm(train_set, label, test_features, train_set)
             id3.graph_it(index)
-            for n in result:
-                print(n)
+            # for n in result:
+               # print(n)
 

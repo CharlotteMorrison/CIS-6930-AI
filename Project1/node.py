@@ -6,6 +6,7 @@ class Node:
         self.result = None          # saved for output
         self.info_gain = 0          # stores the information gain
         self.parent = None
+        self.leaf = 0
 
     def is_leaf(self):
         return len(self.children) == 0
