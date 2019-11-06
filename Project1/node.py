@@ -1,5 +1,6 @@
 class Node:
     def __init__(self):
+        self.id = 0
         self.children = []          # list of the children nodes
         self.attribute_name = None           # what information the node is split on.
         self.attribute_values = None  # the values the feature split is based on

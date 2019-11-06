@@ -1,5 +1,8 @@
 import numpy as np
 import copy
+
+import pandas as pd
+
 from Project1.nodegraph import NodeGraph
 from Project1.node import Node
 
@@ -37,6 +40,24 @@ class ID3Algorithm(object):
         info_gain = entropy - attribute_entropy
         return info_gain
 
+    def get_c45_gain(self, dataset, target_attribute, attribute):
+        dataset_length = len(dataset)
+        pre_split_impurity = self.get_entropy(dataset, target_attribute)
+        post_split_impurity = 0
+        # split the dataset on the value
+        attributes = dataset[attribute].unique()
+        splits = {att: pd.DataFrame for att in attributes}
+
+        for key in splits.keys():
+            splits[key] = dataset[:][dataset[attribute] == key]
+
+        weighting = [len(split)/dataset_length for split in splits]
+        for i in range(len(attributes)):
+            post_split_impurity += weighting[i] * self.get_entropy(splits[attributes[i]], target_attribute)
+        info_gain = pre_split_impurity - post_split_impurity
+
+        return info_gain
+
     def run_id3_algorithm(self, examples, target_attribute, attributes, parent_examples, parent_node=None):
         dataset = copy.deepcopy(examples)
         attribute_list = copy.deepcopy(attributes)
@@ -65,9 +86,16 @@ class ID3Algorithm(object):
 
         # if none are true then add to the tree
         else:
-            # get the best information gain attribute
-            item_values = [self.get_information_gain(parent_dataset, target_attribute, attribute)
-                           for attribute in attribute_list]
+            # get the best information gain attribute from id3
+            item_values = []
+            if self.ig == 'id3':
+                item_values = [self.get_information_gain(parent_dataset, target_attribute, attribute)
+                               for attribute in attribute_list]
+            elif self.ig == 'c45':
+                item_values = [self.get_c45_gain(parent_dataset, target_attribute, attribute)
+                               for attribute in attribute_list]
+            else:
+                print('no ig...')
             best_value = attribute_list[np.argmax(item_values)]
 
             best_attribute_values = dataset[best_value].value_counts(ascending=False).index.tolist()
@@ -81,7 +109,7 @@ class ID3Algorithm(object):
             # remove the best value attribute from the list
             attribute_list.remove(best_value)
 
-            self.graph.new_node(node, node.info_gain, node.attribute_name, node.attribute_values, node.result)
+            self.graph.new_node(node, node.info_gain, node.attribute_name, node.attribute_values, node.result, node.edge_value)
             # build the decision tree
             for value in best_attribute_values:  # list of attributes from the best one...
                 # set up children
@@ -93,7 +121,7 @@ class ID3Algorithm(object):
                 subtree.edge_value = value
                 node.children.append(subtree)
                 self.graph.new_node(subtree, subtree.info_gain, subtree.attribute_name, subtree.attribute_values,
-                                    subtree.result)
+                                    subtree.result, subtree.edge_value)
                 self.graph.new_edge((node, subtree), value)
 
             return node
