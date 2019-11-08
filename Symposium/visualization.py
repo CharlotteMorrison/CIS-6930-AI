@@ -31,7 +31,10 @@ def word_histogram(data):
 
 def word_box_plot(data):
     sns.boxplot(x=data)
+    plt.xlabel('Word Count')
+    plt.title('Word Count Box Plot')
     plt.show()
+    plt.savefig('graphs/word_length_box_plot.png')
 # line plot
 
 # write image to file
