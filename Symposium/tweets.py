@@ -6,13 +6,30 @@ if __name__ == "__main__":
     datafile = "dataset/SentimentAnalysisDataset.csv"
     columns = ["ItemID", "Sentiment", "SentimentSource", "SentimentText"]
 
-    # split test/train
-
     dataset = load_dataset(datafile, columns)
 
     # dataset analysis
     analysis1 = Analysis(dataset, columns)
-    analysis1.result_ratio(columns[1])
+    label_splits = analysis1.result_ratio(columns[1])
+    mean, median, mode, std = analysis1.word_count()
 
+    # TODO split test/train
 
-
+    # summary report printout
+    print("*****************************************************************************")
+    print("*                                                                           *")
+    print("*                     Twitter Sentiment Analysis                            *")
+    print("*                                                                           *")
+    print("*****************************************************************************")
+    print("\nDistribution of label types")
+    print("-----------------------------------------------------------------------------")
+    print("Negative sentiment:  " + str(label_splits[0]))
+    print("Positive sentiment:  " + str(label_splits[1]))
+    print("Total :             " + str(label_splits[1] + label_splits[0]))
+    print("\n-----------------------------------------------------------------------------")
+    print("Tweet word length")
+    print("-----------------------------------------------------------------------------")
+    print("Mean words:                " + str(mean))
+    print("Most frequent word count:  " + str(mode[0][0]) + " words occurred " + str(mode[1][0]) + " times")
+    print("Median word count:         " + str(median))
+    print("Standard Deviation:        " + str(std))
