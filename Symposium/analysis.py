@@ -27,8 +27,9 @@ class Analysis(object):
         std = np.std(self.dataset['WordCount'], axis=0)
 
         # graphs
-        word_histogram(self.dataset['WordCount'])
         word_box_plot(self.dataset['WordCount'])
+        # TODO remove outliers before histogram
+        word_histogram(self.dataset['WordCount'])
         return mean, median, mode, std
 
 

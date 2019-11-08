@@ -15,8 +15,9 @@ def chart_pie(sizes, labels):
     plt.title("Tweet Sentiment Distribution")
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
     plt.axis('equal')
-    plt.show()
+
     plt.savefig('graphs/sentiment_distribution.png')
+    plt.show()
 
 
 def word_histogram(data):
@@ -25,16 +26,18 @@ def word_histogram(data):
     plt.xlabel('Word Count')
     plt.ylabel('Frequency')
     plt.title('Word Count Distribution')
-    plt.show()
     plt.savefig('graphs/word_length_distribution.png')
+    plt.show()
 
 
 def word_box_plot(data):
     sns.boxplot(x=data)
     plt.xlabel('Word Count')
     plt.title('Word Count Box Plot')
-    plt.show()
     plt.savefig('graphs/word_length_box_plot.png')
+    plt.show()
+
+
 # line plot
 
 # write image to file
