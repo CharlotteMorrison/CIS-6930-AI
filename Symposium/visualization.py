@@ -57,6 +57,6 @@ def plot_common_words(words):
     plt.xticks(fontsize=13, rotation=90)
     fd = nltk.FreqDist(words)
     fd.plot(25, cumulative=False)
-    plt.savefig('graphs/word_length_box_plot.png')
+    plt.savefig('graphs/common_words_count.png')
     plt.show()
 # write image to file

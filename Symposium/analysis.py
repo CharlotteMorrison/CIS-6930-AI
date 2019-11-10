@@ -1,7 +1,7 @@
 from collections import Counter
 
 from scipy import stats
-from Symposium.visualization import chart_pie, word_histogram, word_box_plot, word_histogram_outcome
+from Symposium.visualization import *
 import numpy as np
 
 
@@ -50,5 +50,5 @@ class Analysis(object):
             words = line.split()
             for word in words:
                 all_words.append(word.lower())
-
+        plot_common_words(all_words)
         return Counter(all_words).most_common(10)
