@@ -44,11 +44,11 @@ class Analysis(object):
         return mean, median, mode, std, outliers
 
     # most common words (graph)
-    def common_words(self):
+    def common_words(self, name='raw', title='Top 25 most common words'):
         all_words = []
         for line in list(self.dataset['SentimentText']):
             words = line.split()
             for word in words:
                 all_words.append(word.lower())
-        plot_common_words(all_words)
+        plot_common_words(all_words, name, title)
         return Counter(all_words).most_common(10)
