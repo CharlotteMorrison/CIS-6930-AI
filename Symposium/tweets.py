@@ -1,6 +1,7 @@
 from Symposium.analysis import Analysis
 from Symposium.dataloader import load_dataset
 from Symposium.nlp import process_text
+import pprint
 
 if __name__ == "__main__":
     datafile = "dataset/SentimentAnalysisDataset.csv"
@@ -11,7 +12,8 @@ if __name__ == "__main__":
     # dataset analysis
     analysis1 = Analysis(dataset, columns)
     label_splits = analysis1.result_ratio(columns[1])
-    mean, median, mode, std = analysis1.word_count()
+    mean, median, mode, std, outliers = analysis1.word_count()
+    common_words = analysis1.common_words()
 
     # TODO split test/train
 
@@ -33,3 +35,7 @@ if __name__ == "__main__":
     print("Most frequent word count:  " + str(mode[0][0]) + " words occurred " + str(mode[1][0]) + " times")
     print("Median word count:         " + str(median))
     print("Standard Deviation:        " + str(std))
+    print("\n-----------------------------------------------------------------------------")
+    print("Most Common Words")
+    print("-----------------------------------------------------------------------------")
+    pprint.pprint(common_words)

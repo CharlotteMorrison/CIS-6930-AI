@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import nltk
 import seaborn as sns
 
 # pie chart
@@ -30,6 +31,17 @@ def word_histogram(data):
     plt.show()
 
 
+def word_histogram_outcome(pos, neg):
+    plt.figure(figsize=(12, 6))
+    plt.xlim(0, 45)
+    plt.xlabel('Word Count')
+    plt.ylabel('Frequency')
+    plt.title('Word Count Distribution by Sentiment')
+    plt.hist([pos, neg], color=['r', 'b'], alpha=0.5, label=['positive', 'negative'])
+    plt.legend(loc='upper right')
+    plt.savefig('graphs/word_length_distribution_by_sentiment.png')
+
+
 def word_box_plot(data):
     sns.boxplot(x=data)
     plt.xlabel('Word Count')
@@ -39,5 +51,12 @@ def word_box_plot(data):
 
 
 # line plot
-
+def plot_common_words(words):
+    plt.figure(figsize=(12, 5))
+    plt.title('Top 25 most common words')
+    plt.xticks(fontsize=13, rotation=90)
+    fd = nltk.FreqDist(words)
+    fd.plot(25, cumulative=False)
+    plt.savefig('graphs/word_length_box_plot.png')
+    plt.show()
 # write image to file
