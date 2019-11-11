@@ -70,8 +70,12 @@ def word_histogram_outcome(pos, neg):
 
 def word_cloud(words):
     all_words = []
-    for line in words:
-        all_words.extend(line)
+    for line in list(words):
+        words = line.split()
+        for word in words:
+            all_words.append(word.lower())
+    # for line in words:
+        # all_words.extend(line)
     # creates a word frequency dictionary
     word_freq = nltk.Counter(all_words)
     # draw a Word Cloud with word frequencies

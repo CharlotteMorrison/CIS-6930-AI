@@ -1,0 +1,63 @@
+*****************************************************************************
+*                                                                           *
+*                     Twitter Sentiment Analysis                            *
+*                                                                           *
+*****************************************************************************
+
+Distribution of label types
+
+-----------------------------------------------------------------------------
+Negative sentiment:  788436
+Positive sentiment:  790178
+Total :             1578614
+-----------------------------------------------------------------------------
+Tweet word length
+-----------------------------------------------------------------------------
+Mean words:                13.273119331261473
+Most frequent word count:  7 words occurred 89024 times
+Median word count:         12.0
+Standard Deviation:        6.915053030297471
+-----------------------------------------------------------------------------
+Most Common Words
+-----------------------------------------------------------------------------
+i
+to
+the
+a
+my
+and
+you
+is
+for
+in
+
+-----------------------------------------------------------------------------
+Best Model: 0.754594 using {'bow__ngram_range': (1, 2), 'classifier__alpha': 0.01, 'tfidf__use_idf': False}
+-----------------------------------------------------------------------------
+Mean: 0.736387 Stdev:(0.001304) with: {'bow__ngram_range': (1, 1), 'classifier__alpha': 0.01, 'tfidf__use_idf': True}
+Mean: 0.751755 Stdev:(0.001513) with: {'bow__ngram_range': (1, 1), 'classifier__alpha': 0.01, 'tfidf__use_idf': False}
+Mean: 0.735721 Stdev:(0.001321) with: {'bow__ngram_range': (1, 1), 'classifier__alpha': 0.001, 'tfidf__use_idf': True}
+Mean: 0.747005 Stdev:(0.001412) with: {'bow__ngram_range': (1, 1), 'classifier__alpha': 0.001, 'tfidf__use_idf': False}
+Mean: 0.737053 Stdev:(0.001261) with: {'bow__ngram_range': (1, 2), 'classifier__alpha': 0.01, 'tfidf__use_idf': True}
+Mean: 0.754594 Stdev:(0.000893) with: {'bow__ngram_range': (1, 2), 'classifier__alpha': 0.01, 'tfidf__use_idf': False}
+Mean: 0.726688 Stdev:(0.001273) with: {'bow__ngram_range': (1, 2), 'classifier__alpha': 0.001, 'tfidf__use_idf': True}
+Mean: 0.740442 Stdev:(0.001204) with: {'bow__ngram_range': (1, 2), 'classifier__alpha': 0.001, 'tfidf__use_idf': False}
+-----------------------------------------------------------------------------
+Naives Bayes Best Model Results
+-----------------------------------------------------------------------------
+accuracy score:  0.7559189542732079
+
+
+confusion matrix:
+ [[121569  36345]
+ [ 40717 117092]]
+
+
+              precision    recall  f1-score   support
+
+           0       0.75      0.77      0.76    157914
+           1       0.76      0.74      0.75    157809
+
+    accuracy                           0.76    315723
+   macro avg       0.76      0.76      0.76    315723
+weighted avg       0.76      0.76      0.76    315723

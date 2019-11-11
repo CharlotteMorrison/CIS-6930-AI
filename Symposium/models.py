@@ -4,6 +4,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
+from sklearn import svm
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 import Symposium.config
 
@@ -32,13 +34,28 @@ def naives_bayes(X_train, y_train, save_loc):
     params = grid.cv_results_['params']
 
     Symposium.config.report.write("\n-----------------------------------------------------------------------------")
-    Symposium.config.report.write("Best Model: %f using %s" % (grid.best_score_, grid.best_params_))
-    Symposium.config.report.write("-----------------------------------------------------------------------------")
+    Symposium.config.report.write("\nBest Model: %f using %s" % (grid.best_score_, grid.best_params_))
+    Symposium.config.report.write("\n-----------------------------------------------------------------------------\n")
     for mean, stdev, param in zip(means, stds, params):
-        Symposium.config.report.write("Mean: %f Stdev:(%f) with: %r" % (mean, stdev, param))
+        Symposium.config.report.write("\nMean: %f Stdev:(%f) with: %r" % (mean, stdev, param))
 
     # Save the best model
     joblib.dump(grid, save_loc)
+
+
+def svm_linear(X_train, y_train, save_loc):
+    pipeline = Pipeline([
+            ('bow', CountVectorizer(strip_accents='ascii',
+                                    stop_words='english',
+                                    lowercase=True)), # strings to token integer counts
+            ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
+            ('classifier', svm.SVC(kernel='linear')),  # train on TF-IDF vectors w/ Na
+            ])
+
+    pipeline.fit(X_train, y_train)
+
+    # Save the model
+    joblib.dump(pipeline, save_loc)
 
 
 def get_predictions(file, X_test, y_test, title):
@@ -46,16 +63,15 @@ def get_predictions(file, X_test, y_test, title):
     model = joblib.load(file)
     # get predictions from best model above
     y_preds = model.predict(X_test)
-    print('accuracy score: ', accuracy_score(y_test, y_preds))
-    print('\n')
-    print('confusion matrix: \n', confusion_matrix(y_test, y_preds))
-    print('\n')
-    print(classification_report(y_test, y_preds))
+
+    cm = confusion_matrix(y_test, y_preds)
     Symposium.config.report.write("\n-----------------------------------------------------------------------------")
     Symposium.config.report.write(title)
-    Symposium.config.report.write("-----------------------------------------------------------------------------")
-    Symposium.config.report.write('accuracy score: ', accuracy_score(y_test, y_preds))
+    Symposium.config.report.write("\n-----------------------------------------------------------------------------")
+    Symposium.config.report.write('accuracy score: ' + str(accuracy_score(y_test, y_preds)))
     Symposium.config.report.write('\n')
-    Symposium.config.report.write('confusion matrix: \n', confusion_matrix(y_test, y_preds))
-    Symposium.config.report.write('\n')
+    Symposium.config.report.write('confusion matrix: \n')
+    Symposium.config.report.write("{} {}".format(str(cm[0][0]), str(cm[0][1])))
+    Symposium.config.report.write("{} {}".format(str(cm[1][0]), str(cm[1][1])))
+    Symposium.config.report.write('Classification Report: \n')
     Symposium.config.report.write(classification_report(y_test, y_preds))
