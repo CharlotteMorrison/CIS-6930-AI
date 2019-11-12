@@ -1,3 +1,5 @@
+import time
+
 import joblib
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -6,18 +8,19 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn import svm
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import cross_val_score
 
 import Symposium.config
 
 
 def naives_bayes(X_train, y_train, save_loc):
     pipeline = Pipeline([
-            ('bow', CountVectorizer(strip_accents='ascii',
-                                    stop_words='english',
-                                    lowercase=True)), # strings to token integer counts
-            ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
-            ('classifier', MultinomialNB()),  # train on TF-IDF vectors w/ Na
-            ])
+        ('bow', CountVectorizer(strip_accents='ascii',
+                                stop_words='english',
+                                lowercase=True)),  # strings to token integer counts
+        ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
+        ('classifier', MultinomialNB()),  # train on TF-IDF vectors w/ Na
+    ])
 
     # parameters for grid search
     parameters = {'bow__ngram_range': [(1, 1), (1, 2)],
@@ -44,18 +47,36 @@ def naives_bayes(X_train, y_train, save_loc):
 
 
 def svm_linear(X_train, y_train, save_loc):
-    pipeline = Pipeline([
-            ('bow', CountVectorizer(strip_accents='ascii',
-                                    stop_words='english',
-                                    lowercase=True)), # strings to token integer counts
-            ('tfidf', TfidfTransformer()),  # integer counts to weighted TF-IDF scores
-            ('classifier', svm.SVC(kernel='linear')),  # train on TF-IDF vectors w/ Na
-            ])
+    # Create feature vectors
 
-    pipeline.fit(X_train, y_train)
+    vectorizer = TfidfVectorizer(strip_accents='ascii',
+                                 stop_words='english',
+                                 lowercase=True,
+                                 min_df=5,
+                                 max_df=0.8,
+                                 sublinear_tf=True,
+                                 use_idf=True)
+    train_vectors = vectorizer.fit_transform(X_train)
+    print('complete: train_vectorizer')
+    test_vectors = vectorizer.transform(X_train)
+    print('complete: test_vectorizer')
+    # Perform classification with SVM, kernel=linear
+    classifier_linear = svm.SVC(kernel='linear', verbose=True)
+    print('complete: set svm')
+    t0 = time.time()
+    print(time.asctime(time.localtime(time.time())))
+    classifier_linear.fit(train_vectors, y_train)
+    print('complete: linear fit')
+    t1 = time.time()
+    prediction_linear = classifier_linear.predict(test_vectors)
+    print('complete: predictions')
+    t2 = time.time()
+    time_linear_train = t1 - t0
+    time_linear_predict = t2 - t1
+    # results
+    print("Training time: %fs; Prediction time: %fs" % (time_linear_train, time_linear_predict))
 
-    # Save the model
-    joblib.dump(pipeline, save_loc)
+    joblib.dump(classifier_linear, save_loc)
 
 
 def get_predictions(file, X_test, y_test, title):
