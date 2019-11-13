@@ -48,35 +48,11 @@ def naives_bayes(X_train, y_train, save_loc):
 
 def svm_linear(X_train, y_train, save_loc):
     # Create feature vectors
-
-    vectorizer = TfidfVectorizer(strip_accents='ascii',
-                                 stop_words='english',
-                                 lowercase=True,
-                                 min_df=5,
-                                 max_df=0.8,
-                                 sublinear_tf=True,
-                                 use_idf=True)
-    train_vectors = vectorizer.fit_transform(X_train)
-    print('complete: train_vectorizer')
-    test_vectors = vectorizer.transform(X_train)
-    print('complete: test_vectorizer')
-    # Perform classification with SVM, kernel=linear
-    classifier_linear = svm.SVC(kernel='linear', verbose=True)
-    print('complete: set svm')
-    t0 = time.time()
-    print(time.asctime(time.localtime(time.time())))
-    classifier_linear.fit(train_vectors, y_train)
-    print('complete: linear fit')
-    t1 = time.time()
-    prediction_linear = classifier_linear.predict(test_vectors)
-    print('complete: predictions')
-    t2 = time.time()
-    time_linear_train = t1 - t0
-    time_linear_predict = t2 - t1
-    # results
-    print("Training time: %fs; Prediction time: %fs" % (time_linear_train, time_linear_predict))
-
-    joblib.dump(classifier_linear, save_loc)
+    vec = TfidfVectorizer(min_df=5, max_df=0.95, sublinear_tf=True, use_idf=True, ngram_range=(1, 2))
+    svm_clf = svm.LinearSVC(C=0.1, verbose=1)
+    vec_clf = Pipeline([('vectorizer', vec), ('pac', svm_clf)])
+    vec_clf.fit(X_train, y_train)
+    joblib.dump(vec_clf, save_loc, compress=3)
 
 
 def get_predictions(file, X_test, y_test, title):
@@ -86,13 +62,13 @@ def get_predictions(file, X_test, y_test, title):
     y_preds = model.predict(X_test)
 
     cm = confusion_matrix(y_test, y_preds)
-    Symposium.config.report.write("\n-----------------------------------------------------------------------------")
+    Symposium.config.report.write("\n-----------------------------------------------------------------------------\n")
     Symposium.config.report.write(title)
-    Symposium.config.report.write("\n-----------------------------------------------------------------------------")
+    Symposium.config.report.write("\n-----------------------------------------------------------------------------\n")
     Symposium.config.report.write('accuracy score: ' + str(accuracy_score(y_test, y_preds)))
     Symposium.config.report.write('\n')
     Symposium.config.report.write('confusion matrix: \n')
-    Symposium.config.report.write("{} {}".format(str(cm[0][0]), str(cm[0][1])))
-    Symposium.config.report.write("{} {}".format(str(cm[1][0]), str(cm[1][1])))
+    Symposium.config.report.write("{} {}\n".format(str(cm[0][0]), str(cm[0][1])))
+    Symposium.config.report.write("{} {}\n".format(str(cm[1][0]), str(cm[1][1])))
     Symposium.config.report.write('Classification Report: \n')
     Symposium.config.report.write(classification_report(y_test, y_preds))

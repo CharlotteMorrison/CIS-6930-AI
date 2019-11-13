@@ -5,9 +5,11 @@ import re
 import string
 from string import punctuation
 
+import nltk
 from nltk.corpus import stopwords
 
 
+# noinspection RegExpRedundantEscape
 def process_tweet(tweet):
     # Remove HTML special entities (e.g. &amp;)
     tweet = re.sub(r'\&\w*;', '', tweet)
@@ -32,6 +34,15 @@ def process_tweet(tweet):
     # Remove characters beyond Basic Multilingual Plane (BMP) of Unicode:
     tweet = ''.join(c for c in tweet if c <= '\uFFFF')
     return tweet
+
+
+def stem(tweet):
+    # strips suffixes
+    stemmer = nltk.stem.PorterStemmer()
+    words = [word if (word[0:2] == '__') else word.lower() for word in tweet.split() if len(word) >= 3]
+    words = [stemmer.stem(w) for w in words]
+    tweet_stem = ' '.join(words)
+    return tweet_stem
 
 
 def text_process(raw_text):
