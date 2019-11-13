@@ -2,6 +2,7 @@ import time
 
 import joblib
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
@@ -44,6 +45,19 @@ def naives_bayes(X_train, y_train, save_loc):
 
     # Save the best model
     joblib.dump(grid, save_loc)
+
+
+def sgd(X_train, y_train, save_loc):
+    pipeline_sgd = Pipeline([
+        ('bow', CountVectorizer(strip_accents='ascii',
+                                stop_words='english',
+                                lowercase=True)),
+        ('tfidf', TfidfTransformer()),
+        ('nb', SGDClassifier()),
+    ])
+    model = pipeline_sgd.fit(X_train, y_train)
+
+    joblib.dump(model, save_loc)
 
 
 def svm_linear(X_train, y_train, save_loc):
