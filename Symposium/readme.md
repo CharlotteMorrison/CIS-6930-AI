@@ -1,7 +1,8 @@
 # Twitter Sentiment Analysis
 ## Naive-Bayes Classification
-* 
-* 
+* NB uses a  CountVectorizer with the bag of words method for splitting the tweets into tokens and counting the frequency. 
+The stopwords are removed, accents are removed, and the words are converted to lower case. TfidfTransformer is used to
+apply the frequency weighting.
 * CountVectoriser uses the bag of words method for splitting the tweets into tokens and counting the frequency. Also, the
 stopwords are removed, accents are removed and the words are converted to lower case.<br/>
 * TfidfTransformer is used to apply the frequency weighting.<br/>
@@ -30,6 +31,7 @@ dataset is available at:
 [Russian Troll Tweets from FiveThirtyEight](https://github.com/fivethirtyeight/russian-troll-tweets)
 
 ## Stochastic Gradient Descent
+The SVC analysis uses sklearn LinearSVC. The tweets are cleaned using regular expressions and stemmed to remove suffixes. Words with count lower than 5 and stopwords were ignored.
 
 ## Other Resources Used
 [Gentle Start to Natural Language Processing](https://towardsdatascience.com/gentle-start-to-natural-language-processing-using-python-6e46c07addf3)<br/>
