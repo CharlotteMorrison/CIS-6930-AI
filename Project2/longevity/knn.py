@@ -27,12 +27,12 @@ def run_knn(X, y):
     k_list = list(range(2, 21))  # k values
     d_weight = ['uniform', 'distance']
 
-    # need to update graph extensively for these- TODO update graph, add name for saving
+    # need to update graph extensively for these- and changing them doesn't significantly impact performance
     # scalers = [StandardScaler(), RobustScaler(), QuantileTransformer()]
     params = dict(knn__n_neighbors=k_list, knn__weights=d_weight)
 
     knn_pipe = Pipeline([
-        ('scaler', QuantileTransformer()),
+        ('scaler', StandardScaler()),
         ('reduce_dim', PCA()),
         ('knn', KNeighborsClassifier())
     ])
@@ -45,11 +45,11 @@ def run_knn(X, y):
 
     scores = grid_search.cv_results_
 
-    plot_grid_search(scores, k_list, d_weight, 'N Estimators', 'Max Features')
+    plot_grid_search(scores, k_list, d_weight, 'N Estimators', 'Max Features', 'KNN')
 
     print_report = True
     if print_report:
-        timestr = time.strftime("%Y%m%d-%H%M%S")
+        timestr = time.strftime("%Y-%m-%d_%H-%M-%S")
         report = open("/home/charlotte/PycharmProjects/CIS-6930-AI/Project2/reports/KNN_{}.txt".format(timestr), "w")
 
         report.write("\n-----------------------------------------------------------------------------\n")

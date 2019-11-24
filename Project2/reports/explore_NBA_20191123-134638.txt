@@ -1,0 +1,37 @@
+
+-----------------------------------------------------------------------------
+NBA
+-----------------------------------------------------------------------------
+Dataset Shape:
+ (1340, 21)
+Dataset Indices:
+ RangeIndex(start=0, stop=1340, step=1)
+Dataset: columns:
+ Index(['Name', 'GP', 'MIN', 'PPT', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%',
+       'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV',
+       'TAR'],
+      dtype='object')
+Dataset Missing Values:
+ Name     0
+GP       0
+MIN      0
+PPT      0
+FGM      0
+FGA      0
+FG%      0
+3PM      0
+3PA      0
+3P%     11
+FTM      0
+FTA      0
+FT%      0
+OREB     0
+DREB     0
+REB      0
+AST      0
+STL      0
+BLK      0
+TOV      0
+TAR      0
+dtype: int64
+-----------------------------------------------------------------------------

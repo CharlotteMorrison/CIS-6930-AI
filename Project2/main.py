@@ -1,6 +1,6 @@
-from Project2.dataexplorer import explore
+from Project2.dataexplorer import explore, correlation_graph
 from Project2.longevity.knn import run_knn
-
+from Project2.longevity.randomforest import run_rf
 
 if __name__ == "__main__":
 
@@ -17,8 +17,12 @@ if __name__ == "__main__":
     attributes = nba_dataset[nba_dataset.columns[1:-1]]
     target = nba_dataset[nba_dataset.columns[-1:]]
 
+    # check attribute correlations
+    correlation_graph(attributes, "NBA")
+
     # Run K-Nearest Neighbors analysis
-    run_knn(attributes, target)
+    #run_knn(attributes, target)
+    run_rf(attributes, target)
 
 
 
