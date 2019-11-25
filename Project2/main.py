@@ -1,6 +1,9 @@
 from Project2.dataexplorer import explore, correlation_graph
+from Project2.longevity.ann import run_ann
 from Project2.longevity.knn import run_knn
+from Project2.longevity.logisticregression import run_lr
 from Project2.longevity.randomforest import run_rf
+from sklearn.model_selection import train_test_split
 
 if __name__ == "__main__":
 
@@ -17,14 +20,18 @@ if __name__ == "__main__":
     attributes = nba_dataset[nba_dataset.columns[1:-1]]
     target = nba_dataset[nba_dataset.columns[-1:]]
 
+    # split the dataset into test/train
+    X_train, X_test, y_train, y_test = train_test_split(attributes, target, test_size=0.2)
+
     # check attribute correlations
     correlation_graph(attributes, "NBA")
 
-    # Run K-Nearest Neighbors analysis
-    #run_knn(attributes, target)
-    run_rf(attributes, target)
-
-
+    # Run analysis
+    # ------------------------------------
+    #run_knn(X_train, X_test, y_train, y_test)
+    #run_rf(X_train, X_test, y_train, y_test)
+    #run_lr(X_train, X_test, y_train, y_test)
+    run_ann(X_train, X_test, y_train, y_test)
 
 
 

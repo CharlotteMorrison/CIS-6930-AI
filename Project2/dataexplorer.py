@@ -15,8 +15,7 @@ def explore(location, name):
     # change flag to update report
     print_report = False
     if print_report:
-        timestr = time.strftime("%Y%m%d-%H%M%S")
-        report = open("reports/explore_{}_{}.txt".format(name, timestr), "w")
+        report = open("reports/explore_{}.txt".format(name), "w+")
 
         report.write("\n-----------------------------------------------------------------------------\n")
         report.write(name)
@@ -26,6 +25,7 @@ def explore(location, name):
         report.write("Dataset: columns:\n {}\n".format(columns))
         report.write("Dataset Missing Values:\n {}".format(missing_values))
         report.write("\n-----------------------------------------------------------------------------\n")
+        report.close()
     return dataset
 
 
@@ -51,13 +51,12 @@ def correlation_graph(dataset, name):
 
     print_report = True
     if print_report:
-        timestr = time.strftime("%Y%m%d-%H%M%S")
-        report = open("reports/correlation_{}_{}.txt".format(name, timestr), "w")
+        report = open("reports/correlation_{}.txt".format(name), "w+")
 
         report.write("\n-----------------------------------------------------------------------------\n")
         report.write(name + " Correlation Scores")
         report.write("\n-----------------------------------------------------------------------------\n")
         report.write("Correlations: \n{}\n".format(sort_corr_list))
         report.write("\n-----------------------------------------------------------------------------\n")
-
+        report.close()
 

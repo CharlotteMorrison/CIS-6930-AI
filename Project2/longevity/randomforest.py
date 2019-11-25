@@ -1,4 +1,7 @@
 import warnings
+
+from sklearn.metrics import f1_score
+
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 import time
@@ -8,7 +11,7 @@ from sklearn.pipeline import Pipeline
 from Project2.longevity.graph import plot_grid_search
 
 
-def run_rf(X, y):
+def run_rf(X_train, X_test, y_train, y_test):
     # normalization is not needed for random forest.
     # RandomForestClassifier parameters
     # n_estimators (default=10)
@@ -36,15 +39,18 @@ def run_rf(X, y):
     ])
 
     grid_search = GridSearchCV(rf_pipe, param_grid=params, cv=10, scoring='f1')
-    grid_search.fit(X, y.values.ravel())
+    grid_search.fit(X_train, y_train.values.ravel())
     scores = grid_search.cv_results_
 
-    plot_grid_search(scores, estimators, crit, 'N Estimators', 'Max Features', 'RandomForest')
+    plot_grid_search(scores, estimators, crit, 'N Estimators', 'Criterion', 'RandomForest')
+
+    # test the predictions
+    y_predict = grid_search.predict(X_test)
+    f1 = f1_score(y_test, y_predict)
 
     print_report = True
     if print_report:
-        timestr = time.strftime("%Y-%m-%d_%H-%M-%S")
-        report = open("/home/charlotte/PycharmProjects/CIS-6930-AI/Project2/reports/RF_{}.txt".format(timestr), "w")
+        report = open("/home/charlotte/PycharmProjects/CIS-6930-AI/Project2/reports/RF.txt", "w+")
 
         report.write("\n-----------------------------------------------------------------------------\n")
         report.write("Random Forest Classification")
@@ -55,7 +61,9 @@ def run_rf(X, y):
         report.write("Best Score: {}\n".format(grid_search.best_score_))
         report.write("Best Parameters: {}\n".format(grid_search.best_params_))
         report.write("\n-----------------------------------------------------------------------------\n")
-
+        report.write("Test F1 Score: {}".format(f1))
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.close()
 
 
 
