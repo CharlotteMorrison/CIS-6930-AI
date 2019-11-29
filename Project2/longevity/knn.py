@@ -35,9 +35,36 @@ def run_knn(X_train, X_test, y_train, y_test):
         ('knn', KNeighborsClassifier())
     ])
 
-    # knn = KNeighborsClassifier()
-
     # using grid search for k = 2-10, 10 fold cross validation, f1 scoring, run in parallel
+    grid_search = GridSearchCV(knn_pipe, param_grid=params, cv=10, scoring='f1')
+    grid_search.fit(X_train, y_train.values.ravel())
+
+    scores = grid_search.cv_results_
+
+    plot_grid_search(scores, k_list, d_weight, 'N Estimators', 'Max Features', 'KNN')
+
+    # test the predictions
+    y_predict = grid_search.predict(X_test)
+    f1 = f1_score(y_test, y_predict)
+
+    print_report = True
+    if print_report:
+
+        report = open("/home/charlotte/PycharmProjects/CIS-6930-AI/Project2/reports/KNN.txt", "w")
+
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.write("KNN Classification")
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.write("Mean Train Score:\n {}\n".format(scores['mean_test_score']))
+        report.write("Standard Scores:\n{}\n".format(scores['std_test_score']))
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.write("Best Score: {}\n".format(grid_search.best_score_))
+        report.write("Best Parameters: {}\n".format(grid_search.best_params_))
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.write("Test F1 Score: {}".format(f1))
+        report.write("\n-----------------------------------------------------------------------------\n")
+        report.close()
+
 
 
 
