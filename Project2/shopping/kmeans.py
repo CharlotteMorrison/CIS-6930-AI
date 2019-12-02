@@ -1,14 +1,15 @@
 from sklearn.utils.testing import ignore_warnings
-from sklearn.exceptions import ConvergenceWarning
+from sklearn.exceptions import ConvergenceWarning, DataConversionWarning
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import adjusted_rand_score
+from sklearn.metrics import adjusted_rand_score, davies_bouldin_score
 
 
 @ignore_warnings(category=ConvergenceWarning)
+@ignore_warnings(category=DataConversionWarning)
 def run_kmeans(X, y, name):
     report = open("/home/charlotte/PycharmProjects/CIS-6930-AI/Project2/reports/k_means.txt", "w")
     report.write("\n-----------------------------------------------------------------------------\n")
@@ -51,10 +52,13 @@ def run_kmeans(X, y, name):
 
     y_predict = km.fit_predict(X_scaled)
     total_rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
+    dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
+
     report.write("\n-----------------------------------------------------------------------------\n")
     report.write('Total Rand score (all attributes: {})\n'.format(total_rand_score))
     report.write('Cluster Center: \n{}\n'.format(km.cluster_centers_))
     report.write('Number of iterations: {}\n'.format(km.n_iter_))
+    report.write('Davies-Bouldin Index: {}\n'.format(dbi_score))
     report.write("\n-----------------------------------------------------------------------------\n")
 
     c1_count = 0
@@ -67,8 +71,9 @@ def run_kmeans(X, y, name):
             X_temp = np.vstack((C1, C2)).T
             y_predict = km.fit_predict(X_temp)
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
+            dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25:
+            if rand_score >= 0.25 or dbi_score >= 200.25:
                 # plot the 4 clusters
                 graph_it(km, X_temp, y_predict, 'Pair_{}_{}\n'.format(labels[c1_count], labels[c2_count - 1]))
                 report.write("\n-----------------------------------------------------------------------------\n")
@@ -76,19 +81,22 @@ def run_kmeans(X, y, name):
                 report.write('Cluster Center: \n{}\n'.format(km.cluster_centers_))
                 report.write('Number of iterations: {}\n'.format(km.n_iter_))
                 report.write('Rand Score: {}\n'.format(rand_score))
+                report.write('Davies-Bouldin Index: {}\n'.format(dbi_score))
                 report.write("\n-----------------------------------------------------------------------------\n")
 
             C2_temp = np.expand_dims(C2, axis=1)
             temp_array = np.concatenate((temp_array, C2_temp), axis=1)
             y_predict = km.fit_predict(temp_array)
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
+            dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25:
+            if rand_score >= 0.25 or dbi_score >= 200.25:
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[0:c2_count]))
                 report.write('Cluster Center: \n{}\n'.format(km.cluster_centers_))
                 report.write('Number of iterations: {}\n'.format(km.n_iter_))
-                report.write('Rand Score: {}\n'.format(rand_score))
+                report.write('Rand Index: {}\n'.format(rand_score))
+                report.write('Davies-Bouldin Index: {}\n'.format(dbi_score))
                 report.write("\n-----------------------------------------------------------------------------\n")
 
             c2_count += 1
