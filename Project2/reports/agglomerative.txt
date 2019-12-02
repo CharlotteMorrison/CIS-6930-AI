@@ -1,0 +1,835 @@
+
+-----------------------------------------------------------------------------
+Complete-Linkage Agglomerative Classification
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[   85   158]
+ [10037 11043]
+ [ 4224  4489]
+ ...
+ [24652 24655]
+ [24651 24656]
+ [24639 24657]]
+Number of Connected Components: 1
+Davies-Bouldin Index: 9.34548072492913
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Administrative, ['Administrative', 'Administrative_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24654 24655]
+ [24646 24653]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 831.8085303678693
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Administrative_Duration, ['Administrative', 'Administrative_Duration', 'Informational']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24652 24653]
+ [24654 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 2094.2304893610644
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Administrative_Duration, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24648 24654]
+ [24652 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 8.06005533544117
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Administrative_Duration, Region
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    25]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5577.451303087076
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [11372 11449]
+ [    6 12330]
+ ...
+ [24651 24654]
+ [24652 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 1103.344744876114
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [11372 11449]
+ [    6 12330]
+ ...
+ [24652 24655]
+ [24298 24654]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 370.91550069582803
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational, TrafficType
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    20]
+ [    1     9]
+ [    2     5]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 309.1255530279133
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational_Duration, ['Administrative', 'Administrative_Duration', 'Informational']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24649 24655]
+ [24653 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 228.27479195112656
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational_Duration, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [11372 11449]
+ [    6 12330]
+ ...
+ [24653 24655]
+ [24652 24656]
+ [24651 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 294.6593023081222
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational_Duration, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24651 24654]
+ [24653 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 4.048378906902865
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational_Duration, SpecialDay
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24652 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 284.1511565406294
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Informational_Duration, Region
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    15]
+ ...
+ [24650 24654]
+ [24655 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 378.62618703020394
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: ProductRelated, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     3]
+ [    6 12330]
+ ...
+ [24650 24653]
+ [24655 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.241921367714827
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: ProductRelated_Duration, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1   340]
+ [    6 12330]
+ ...
+ [24646 24652]
+ [24654 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5.8638111130483574
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: BounceRates, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     8]
+ [    6 12330]
+ ...
+ [24650 24654]
+ [24655 24656]
+ [20647 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.8162715305041055
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: ExitRates, TrafficType
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    24]
+ [    1    52]
+ [    2     6]
+ ...
+ [24652 24653]
+ [24649 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 936.1137201443352
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: ExitRates, Weekend
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     8]
+ [    6 12330]
+ ...
+ [24649 24653]
+ [24655 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 468.63127624387835
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, Administrative_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24648 24654]
+ [24652 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 8.06005533544117
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24652 24654]
+ [24653 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 12.223644409031163
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, Informational_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24651 24654]
+ [24653 24656]
+ [24655 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 4.048378906902865
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24653 24654]
+ [24652 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 8.827005971285693
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ProductRelated
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     3]
+ [    6 12330]
+ ...
+ [24650 24653]
+ [24655 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.241921367714827
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ProductRelated_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1   340]
+ [    6 12330]
+ ...
+ [24646 24652]
+ [24654 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5.8638111130483574
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [11372 11449]
+ [    6 12330]
+ ...
+ [24650 24654]
+ [24655 24656]
+ [24651 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5.6497184778262515
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, BounceRates
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     8]
+ [    6 12330]
+ ...
+ [24650 24654]
+ [24655 24656]
+ [20647 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.8162715305041055
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24652 24655]
+ [24653 24654]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 21.246528194320124
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, SpecialDay
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24653 24654]
+ [24655 24656]
+ [24652 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 9.417838351599482
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [   16 12330]
+ [    6    79]
+ ...
+ [24653 24655]
+ [24644 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 2.3070774501512625
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    16]
+ [  132   156]
+ [  159 12331]
+ ...
+ [24652 24655]
+ [24618 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 2.3609875097339805
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, Browser
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     3]
+ [   10 12330]
+ ...
+ [24648 24651]
+ [24652 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 8.819858225850979
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems', 'Browser', 'Region']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    85]
+ [ 8549  8641]
+ [10783 12331]
+ ...
+ [24650 24655]
+ [24649 24656]
+ [24616 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 2.341460206969724
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: PageValues, VisitorType
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24645 24651]
+ [24654 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.3738281809638235
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: SpecialDay, Informational_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24652 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 284.1511565406294
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: SpecialDay, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24653 24654]
+ [24655 24656]
+ [24652 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 9.417838351599482
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: OperatingSystems, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    10]
+ [    1     5]
+ [    2    44]
+ ...
+ [24654 24655]
+ [24652 24653]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 238.3978456335665
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Browser, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     3]
+ [   10 12330]
+ ...
+ [24648 24651]
+ [24652 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 8.819858225850979
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Browser, TrafficType
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    33]
+ [    1    49]
+ [    2    10]
+ ...
+ [24646 24655]
+ [24652 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 38281.23069836429
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Browser, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems', 'Browser', 'Region', 'TrafficType']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[10037 11043]
+ [ 8195  9568]
+ [  577  1896]
+ ...
+ [24651 24655]
+ [24653 24656]
+ [24635 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 235.4138816791998
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Region, Administrative_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    25]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5577.451303087076
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Region, ['Administrative', 'Administrative_Duration', 'Informational']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    25]
+ ...
+ [24646 24654]
+ [24652 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 259.9723747642861
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Region, Informational_Duration
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    15]
+ ...
+ [24650 24654]
+ [24655 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 378.62618703020394
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Region, Region
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    4 12330]
+ [    2    15]
+ ...
+ [24652 24653]
+ [24650 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 5132.739612736055
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Region, TrafficType
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    29]
+ [    1     9]
+ [    2    15]
+ ...
+ [24652 24654]
+ [24653 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 214.5478990882467
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: TrafficType, Informational
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    20]
+ [    1     9]
+ [    2     5]
+ ...
+ [24651 24655]
+ [24654 24656]
+ [24653 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 309.1255530279133
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: TrafficType, ExitRates
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    24]
+ [    1    52]
+ [    2     6]
+ ...
+ [24652 24653]
+ [24649 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 936.1137201443352
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: TrafficType, Browser
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    33]
+ [    1    49]
+ [    2    10]
+ ...
+ [24646 24655]
+ [24652 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 38281.23069836429
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: TrafficType, Region
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0    29]
+ [    1     9]
+ [    2    15]
+ ...
+ [24652 24654]
+ [24653 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 214.5478990882467
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: VisitorType, PageValues
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     1]
+ [    2 12330]
+ [    3 12331]
+ ...
+ [24645 24651]
+ [24654 24655]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 3.3738281809638235
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: VisitorType, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems', 'Browser', 'Region', 'TrafficType', 'VisitorType']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[10037 11043]
+ [ 8195  9568]
+ [  577  1896]
+ ...
+ [24635 24655]
+ [24654 24656]
+ [24640 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 729.738938637364
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Weekend, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated']
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     3]
+ [    6 12330]
+ ...
+ [24654 24655]
+ [24651 24652]
+ [24656 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 1249.307542116832
+
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+Pair: Weekend, ExitRates
+Total Rand score (all attributes: 0.10437814975639885)
+Number of Leaves: 12330
+Number of Children: [[    0     2]
+ [    1     8]
+ [    6 12330]
+ ...
+ [24649 24653]
+ [24655 24656]
+ [24654 24657]]
+Number of iterations: 1
+Davies-Bouldin Index: 468.63127624387835
+
+-----------------------------------------------------------------------------
