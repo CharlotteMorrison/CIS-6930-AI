@@ -21,6 +21,7 @@ if __name__ == "__main__":
     # start the training/testing
 
     X_train, X_test, y_train, y_test = train_test_split(dataset['SentimentText'], dataset['Sentiment'], test_size=0.2)
+    print(type(X_test))
 # ---------------------------------------------------------------------------------------
     # Uncomment to run Naive Bayes
 # ---------------------------------------------------------------------------------------
@@ -45,6 +46,6 @@ if __name__ == "__main__":
 # ---------------------------------------------------------------------------------------
     # uncomment to run SGD
 # ---------------------------------------------------------------------------------------
-    save_SGD = "pickles/sgd.pkl"
-    sgd(X_train, y_train, save_SGD)
-    get_predictions(save_SGD, X_test, y_test, "Stochastic Gradient Descent")
+    # save_SGD = "pickles/sgd.pkl"
+    # sgd(X_train, y_train, save_SGD)
+    # get_predictions(save_SGD, X_test, y_test, "Stochastic Gradient Descent")
