@@ -20,7 +20,7 @@ Davies-Bouldin Index: 9.34548072492913
 
 -----------------------------------------------------------------------------
 Pair: Informational_Duration, PageValues
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.4312913863548714
 Number of Leaves: 12330
 Number of Children: [[    0     1]
  [    2 12330]
@@ -36,7 +36,7 @@ Davies-Bouldin Index: 4.048378906902865
 
 -----------------------------------------------------------------------------
 Pair: ProductRelated, PageValues
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.4376674690669474
 Number of Leaves: 12330
 Number of Children: [[    0     2]
  [    1     3]
@@ -52,7 +52,7 @@ Davies-Bouldin Index: 3.241921367714827
 
 -----------------------------------------------------------------------------
 Pair: BounceRates, PageValues
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.26570306175678576
 Number of Leaves: 12330
 Number of Children: [[    0     2]
  [    1     8]
@@ -68,7 +68,7 @@ Davies-Bouldin Index: 3.8162715305041055
 
 -----------------------------------------------------------------------------
 Pair: PageValues, Informational_Duration
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.4312913863548714
 Number of Leaves: 12330
 Number of Children: [[    0     1]
  [    2 12330]
@@ -84,7 +84,7 @@ Davies-Bouldin Index: 4.048378906902865
 
 -----------------------------------------------------------------------------
 Pair: PageValues, ProductRelated
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.4376674690669474
 Number of Leaves: 12330
 Number of Children: [[    0     2]
  [    1     3]
@@ -100,7 +100,7 @@ Davies-Bouldin Index: 3.241921367714827
 
 -----------------------------------------------------------------------------
 Pair: PageValues, BounceRates
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.26570306175678576
 Number of Leaves: 12330
 Number of Children: [[    0     2]
  [    1     8]
@@ -116,7 +116,7 @@ Davies-Bouldin Index: 3.8162715305041055
 
 -----------------------------------------------------------------------------
 Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay']
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score: 0.2536249200464633
 Number of Leaves: 12330
 Number of Children: [[    0     2]
  [   16 12330]
@@ -132,7 +132,7 @@ Davies-Bouldin Index: 2.3070774501512625
 
 -----------------------------------------------------------------------------
 Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems']
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score: 0.28065835637062064
 Number of Leaves: 12330
 Number of Children: [[    0    16]
  [  132   156]
@@ -148,7 +148,7 @@ Davies-Bouldin Index: 2.3609875097339805
 
 -----------------------------------------------------------------------------
 Pair: PageValues, ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'Month', 'OperatingSystems', 'Browser', 'Region']
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score: 0.3062864474598226
 Number of Leaves: 12330
 Number of Children: [[    0    85]
  [ 8549  8641]
@@ -164,7 +164,7 @@ Davies-Bouldin Index: 2.341460206969724
 
 -----------------------------------------------------------------------------
 Pair: PageValues, VisitorType
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.3048198473074361
 Number of Leaves: 12330
 Number of Children: [[    0     1]
  [    2 12330]
@@ -180,7 +180,7 @@ Davies-Bouldin Index: 3.3738281809638235
 
 -----------------------------------------------------------------------------
 Pair: VisitorType, PageValues
-Total Rand score (all attributes: 0.10437814975639885)
+Rand score : 0.3048198473074361
 Number of Leaves: 12330
 Number of Children: [[    0     1]
  [    2 12330]

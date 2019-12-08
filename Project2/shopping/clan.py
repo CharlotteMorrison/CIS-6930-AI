@@ -72,7 +72,7 @@ def run_clan(X, y):
                 # plot the 4 clusters
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[c2_count - 1]))
-                report.write('Total Rand score (all attributes: {})\n'.format(total_rand_score))
+                report.write('Rand score : {}\n'.format(rand_score))
                 report.write('Number of Leaves: {}\nNumber of Children: {}\n'.format(ac.n_leaves_, ac.children_))
                 report.write('Number of iterations: {}\n'.format(ac.n_connected_components_))
                 report.write('Davies-Bouldin Index: {}\n'.format(dbi_score))
@@ -87,7 +87,7 @@ def run_clan(X, y):
             if rand_score >= 0.25 and dbi_score <= 5:
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[0:c2_count]))
-                report.write('Total Rand score (all attributes: {})\n'.format(total_rand_score))
+                report.write('Rand score: {}\n'.format(rand_score))
                 report.write('Number of Leaves: {}\nNumber of Children: {}\n'.format(ac.n_leaves_, ac.children_))
                 report.write('Number of iterations: {}\n'.format(ac.n_connected_components_))
                 report.write('Davies-Bouldin Index: {}\n'.format(dbi_score))
