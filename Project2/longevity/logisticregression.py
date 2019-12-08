@@ -1,5 +1,3 @@
-import time
-
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score

@@ -68,7 +68,7 @@ def run_clan(X, y):
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
             dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25 or dbi_score >= 200.25:
+            if rand_score >= 0.25 and dbi_score <= 5:
                 # plot the 4 clusters
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[c2_count - 1]))
@@ -84,7 +84,7 @@ def run_clan(X, y):
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
             dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25 or dbi_score >= 200.25:
+            if rand_score >= 0.25 and dbi_score <= 5:
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[0:c2_count]))
                 report.write('Total Rand score (all attributes: {})\n'.format(total_rand_score))

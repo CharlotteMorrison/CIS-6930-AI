@@ -41,7 +41,7 @@ def correlation_graph(dataset, name):
     ax.set_yticks(ticks)
     ax.set_xticklabels(dataset.columns)
     ax.set_yticklabels(dataset.columns)
-    plt.savefig('plots/correlations.png')
+    plt.savefig('plots/correlations_{}.png'.format(name))
     plt.show()
     plt.close('all')
 

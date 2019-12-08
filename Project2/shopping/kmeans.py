@@ -68,12 +68,13 @@ def run_kmeans(X, y, name):
         c2_count = 1
         for C2 in X_scaled.T:
             # compares all two pairs of attributes
+
             X_temp = np.vstack((C1, C2)).T
             y_predict = km.fit_predict(X_temp)
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
             dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25 or dbi_score >= 200.25:
+            if rand_score >= 0.25 and dbi_score <= 5:
                 # plot the 4 clusters
                 graph_it(km, X_temp, y_predict, 'Pair_{}_{}\n'.format(labels[c1_count], labels[c2_count - 1]))
                 report.write("\n-----------------------------------------------------------------------------\n")
@@ -90,7 +91,7 @@ def run_kmeans(X, y, name):
             rand_score = adjusted_rand_score(y.values.ravel(), y_predict)
             dbi_score = davies_bouldin_score(y.values.ravel().reshape(-1, 1), y_predict.reshape(-1, 1))
 
-            if rand_score >= 0.25 or dbi_score >= 200.25:
+            if rand_score >= 0.25 and dbi_score <= 5:
                 report.write("\n-----------------------------------------------------------------------------\n")
                 report.write('Pair: {}, {}\n'.format(labels[c1_count], labels[0:c2_count]))
                 report.write('Cluster Center: \n{}\n'.format(km.cluster_centers_))
